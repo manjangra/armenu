@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR Menu</title>
+  <title>AR Burger Menu</title>
   
-  <!-- Yeh script 3D model ko load karti hai -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
   
   <style>
-    /* Yeh screen ko white/blank hone se rokta hai */
     body {
       margin: 0;
       padding: 0;
@@ -17,26 +15,56 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
     
-    /* Model Viewer ko poori screen par set karna */
     model-viewer {
       width: 100%;
       height: 100%;
-      background-color: #f0f0f0; /* Halka grey color taaki pata chale viewer load hua hai */
+      background-color: #f4f4f4;
+    }
+
+    /* AR Button ka Design */
+    .ar-button {
+      background-color: #ff4757; /* Red color ka button */
+      color: white;
+      border-radius: 30px;
+      border: none;
+      position: absolute;
+      bottom: 40px; /* Screen ke neeche se thoda upar */
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .ar-button:active {
+      background-color: #ff6b81;
     }
   </style>
 </head>
 <body>
 
-  <!-- Yahan file ka naam exact match hona chahiye -->
   <model-viewer 
     src="burger.glb" 
     ar 
+    ar-scale="auto"
+    ar-placement="floor"
     ar-modes="webxr scene-viewer quick-look" 
     camera-controls 
     auto-rotate 
     shadow-intensity="1">
+    
+    <button slot="ar-button" class="ar-button">
+      📷 View on Table
+    </button>
+
   </model-viewer>
 
 </body>
